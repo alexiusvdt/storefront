@@ -54,3 +54,7 @@ class Product(models.Model):
     # update when calling Model.save() and not QuerySet.update
     modified_at = models.DateTimeField(auto_now=True)
     deleted_at = models.DateTimeField()
+
+    class Meta:
+        ordering = ["name"]
+        get_latest_by = "created_at"

@@ -8,6 +8,8 @@ python_version = "3.11"
 
 [packages]
 django = "*"
+djangorestframework = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 black = "==22.3.0"
