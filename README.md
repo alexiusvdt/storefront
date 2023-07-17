@@ -46,8 +46,29 @@ fib = [0, 1, 1, 2, 3, 5, 8, 13]
 * clean up model names (django appends things like '_id' to keys, give a more readable alias or change the root name)
 
 # notes
-django rest framework not working? open your IDE (in VSCode, `ctrl + shift + p`) and select `"python: select interpreter"`` and make sure the correct venv is active
-
+* django rest framework not working? open your IDE (in VSCode, `ctrl + shift + p`) and select `"python: select interpreter"`` and make sure the correct venv is active
+* to verify jwt token: 
+```shell
+curl \ -X POST \ -H "Content-Type: application/json" \ -d "{\"email\": \"<email>\", \"password\": \"<password>\"}" localhost:8000/api/token/
+```
+in the response will be something like:
+```
+{"refresh":"<long string here>","access":"<another long string>"}
+```
+You can use the returned access token to prove authentication for a protected view:
+```
+curl \
+  -H "Authorization: Bearer <access token>" \
+  http://localhost:8000/api/products/
+```
+When this short-lived access token expires, you can use the longer-lived refresh token to obtain another access token:
+```
+curl \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '{\"refresh\":"<refresh token>"}' \
+  http://localhost:8000/api/token/refresh/
+```
 ## Setup
 
 ```sh
