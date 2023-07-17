@@ -1,6 +1,6 @@
 [run]
 source = storefront
-omit = storefront/__main__.py
+omit = storefront/__main__.py, storefront/asgi.py, storefront/settings.py, storefront/urls.py, storefront/wsgi.py, storefront/admin.py,
 
 [report]
 exclude_lines =
