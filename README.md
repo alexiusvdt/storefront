@@ -23,9 +23,9 @@ fib = [0, 1, 1, 2, 3, 5, 8, 13]
   * ~~database models created, migration(s) applied~~
   * serializers created
     * ~~product model~~
-    * product_category
-    * product_inventory
-    * discount
+    * ~~product_category~~
+    * ~~product_inventory~~
+    * ~~discount~~
   * ~~register urls (local & in parent app)~~
   * add data to test api functionality
   * add test(s)
@@ -42,6 +42,7 @@ fib = [0, 1, 1, 2, 3, 5, 8, 13]
 * create shipping application
 * expand on current db model (ie add description to product table, etc)
 * clean up tagged issues (commented as 'laterbase')
+* clean up model names (django appends things like '_id' to keys, give a more readable alias or change the root name)
 
 # notes
 django rest framework not working? open your IDE (in VSCode, `ctrl + shift + p`) and select `"python: select interpreter"`` and make sure the correct venv is active

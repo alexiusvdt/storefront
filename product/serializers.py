@@ -3,6 +3,7 @@ from rest_framework import serializers
 from .models import Discount, Product, ProductCategory, ProductInventory
 
 # https://www.geeksforgeeks.org/modelserializer-in-serializers-django-rest-framework/#
+# laterbase : double check readable/allowable fields
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -19,7 +20,7 @@ class ProductSerializer(serializers.ModelSerializer):
             "discount_id",
             "created_at",
             "modified_at",
-            "deleted_at",
+            "closed_at",
         ]
         read_only_fields = ["created_at"]
 
@@ -29,6 +30,7 @@ class ProductInventorySerializer(serializers.ModelSerializer):
         model = ProductInventory
         fields = [
             "id",
+            "name",
             "quantity",
             "created_at",
             "modified_at",
