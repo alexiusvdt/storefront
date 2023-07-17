@@ -21,13 +21,14 @@ fib = [0, 1, 1, 2, 3, 5, 8, 13]
   * add test(s)
 # create product service (3)
   * ~~database models created, migration(s) applied~~
-  * serializers created
+  * ~~serializers created~~
     * ~~product model~~
     * ~~product_category~~
     * ~~product_inventory~~
     * ~~discount~~
   * ~~register urls (local & in parent app)~~
   * add data to test api functionality
+  * add authorization protection
   * add test(s)
 # create controller service (13)
 # forecast & create shipping service (5)
