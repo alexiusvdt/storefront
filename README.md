@@ -38,6 +38,9 @@ fib = [0, 1, 1, 2, 3, 5, 8, 13]
 * [https://docs.djangoproject.com/en/4.2/topics/i18n/timezones/](create timezone middleware/adjust default setting)
 * 
 
+# notes
+django rest framework not working? open your IDE (in VSCode, `ctrl + shift + p`) and select `"python: select interpreter"`` and make sure the correct venv is active
+
 ## Setup
 
 ```sh

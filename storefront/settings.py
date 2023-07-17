@@ -1,3 +1,4 @@
+# type: ignore
 """
 Django settings for storefront project.
 
@@ -38,17 +39,20 @@ INSTALLED_APPS = [
     # 'user',
     # 'order',
     # 'shipping',
-    # additional packages
-    "corsheaders",
-    "rest_framework",
-    # default apps
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
-    # 'django.contrib.sessions',
+    "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
+    # contrib.sites allows this codebase to work on multiple databases
+    "django.contrib.sites",
+    "corsheaders",
 ]
+
+# for contrib.sites
+SITE_ID = 1
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -60,6 +64,16 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
 ]
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    # ]
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    #     'PAGE_SIZE': 10
+}
 
 ROOT_URLCONF = "storefront.urls"
 

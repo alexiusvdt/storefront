@@ -25,5 +25,5 @@ router.register(r"products", views.ProductView, "product")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/", include("router.urls", namespace="rest_framework")),
+    path("api/", include(router.urls), name="product"),
 ]

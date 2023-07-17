@@ -21,5 +21,4 @@ class ProductSerializer(serializers.ModelSerializer):
             "modified_at",
             "deleted_at",
         ]
-        exclude = ["id"]
         read_only_fields = ["created_at"]
