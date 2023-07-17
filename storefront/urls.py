@@ -23,9 +23,11 @@ from product import views
 router = routers.DefaultRouter()
 router.register(r"products", views.ProductView, "product")
 router.register(r"inventory", views.ProductInventoryView, "inventory")
+router.register(r"category", views.ProductCategoryView, "category")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include(router.urls), name="product"),
     path("api/", include(router.urls), name="inventory"),
+    path("api/", include(router.urls), name="category"),
 ]

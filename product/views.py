@@ -1,8 +1,12 @@
 from django.http import HttpResponse
 from rest_framework import viewsets
 
-from .models import Product, ProductInventory
-from .serializers import ProductInventorySerializer, ProductSerializer
+from .models import Product, ProductCategory, ProductInventory
+from .serializers import (
+    ProductCategorySerializer,
+    ProductInventorySerializer,
+    ProductSerializer,
+)
 
 # from django.shortcuts import render
 # request -> responses
@@ -23,3 +27,8 @@ class ProductView(viewsets.ModelViewSet):
 class ProductInventoryView(viewsets.ModelViewSet):
     serializer_class = ProductInventorySerializer
     queryset = ProductInventory.objects.all()
+
+
+class ProductCategoryView(viewsets.ModelViewSet):
+    serializer_class = ProductCategorySerializer
+    queryset = ProductCategory.objects.all()
