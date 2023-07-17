@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Product
+from .models import Product, ProductInventory
 
 # https://www.geeksforgeeks.org/modelserializer-in-serializers-django-rest-framework/#
 
@@ -22,3 +22,16 @@ class ProductSerializer(serializers.ModelSerializer):
             "deleted_at",
         ]
         read_only_fields = ["created_at"]
+
+
+class ProductInventorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductInventory
+        fields = [
+            "id",
+            "quantity",
+            "created_at",
+            "modified_at",
+            "closed_at",
+        ]
+        read_only_fields = ["created_at", "modified_at", "closed_at"]

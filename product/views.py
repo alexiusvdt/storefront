@@ -1,8 +1,8 @@
 from django.http import HttpResponse
 from rest_framework import viewsets
 
-from .models import Product
-from .serializers import ProductSerializer
+from .models import Product, ProductInventory
+from .serializers import ProductInventorySerializer, ProductSerializer
 
 # from django.shortcuts import render
 # request -> responses
@@ -18,3 +18,8 @@ def say_hello(request):
 class ProductView(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
+
+
+class ProductInventoryView(viewsets.ModelViewSet):
+    serializer_class = ProductInventorySerializer
+    queryset = ProductInventory.objects.all()

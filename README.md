@@ -21,10 +21,13 @@ fib = [0, 1, 1, 2, 3, 5, 8, 13]
   * add test(s)
 # create product service (3)
   * ~~database models created, migration(s) applied~~
-  * serializer created
-  * create simple template for testing
-  * create views(controller logic)
-  * register urls (local & in parent app)
+  * serializers created
+    * ~~product model~~
+    * product_category
+    * product_inventory
+    * discount
+  * ~~register urls (local & in parent app)~~
+  * add data to test api functionality
   * add test(s)
 # create controller service (13)
 # forecast & create shipping service (5)
@@ -36,7 +39,8 @@ fib = [0, 1, 1, 2, 3, 5, 8, 13]
 
 ## The (todo)Later Base
 * [https://docs.djangoproject.com/en/4.2/topics/i18n/timezones/](create timezone middleware/adjust default setting)
-* 
+* create shipping application
+* expand on current db model (ie add description to product table, etc)
 
 # notes
 django rest framework not working? open your IDE (in VSCode, `ctrl + shift + p`) and select `"python: select interpreter"`` and make sure the correct venv is active
