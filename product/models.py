@@ -13,7 +13,6 @@ class ProductCategory(models.Model):
 
 
 class ProductInventory(models.Model):
-    name = models.CharField(max_length=100, null=False)
     quantity = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)

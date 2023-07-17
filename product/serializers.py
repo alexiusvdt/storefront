@@ -30,7 +30,6 @@ class ProductInventorySerializer(serializers.ModelSerializer):
         model = ProductInventory
         fields = [
             "id",
-            "name",
             "quantity",
             "created_at",
             "modified_at",
