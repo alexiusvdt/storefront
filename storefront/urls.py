@@ -17,14 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from product import views
+from product import views as productviews
+from user import views as userviews
 
 router = routers.DefaultRouter()
-router.register(r"products", views.ProductView, "product")
-router.register(r"inventory", views.ProductInventoryView, "inventory")
-router.register(r"category", views.ProductCategoryView, "category")
-router.register(r"discount", views.DiscountView, "discount")
+router.register(r"products", productviews.ProductView, "product")
+router.register(r"inventory", productviews.ProductInventoryView, "inventory")
+router.register(r"category", productviews.ProductCategoryView, "category")
+router.register(r"discount", productviews.DiscountView, "discount")
+router.register(r"users", userviews.UserView, "user")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -32,4 +35,8 @@ urlpatterns = [
     path("api/", include(router.urls), name="inventory"),
     path("api/", include(router.urls), name="category"),
     path("api/", include(router.urls), name="discount"),
+    path("api/", include(router.urls), name="user"),
+    # path('auth/', include('rest_auth.urls')),
+    path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
 ]

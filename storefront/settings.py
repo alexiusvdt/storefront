@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     # my apps...do you include storefront in storefront?
     "storefront",
     "product",
-    # 'user',
+    "user",
     # 'order',
     # 'shipping',
     "django.contrib.admin",
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "corsheaders",
 ]
+AUTH_USER_MODEL = "user.user"
 
 # for contrib.sites
 SITE_ID = 1
@@ -71,9 +72,12 @@ REST_FRAMEWORK = {
     "PAGINATE_BY": 10,  # Default to 10
     "PAGINATE_BY_PARAM": "page_size",  # Allow client to override, using `?page_size=xxx`.
     "MAX_PAGINATE_BY": 100,  # Maximum limit allowed when using `?page_size=xxx`.
-    "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
-    ],
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+    ),
 }
 
 ROOT_URLCONF = "storefront.urls"
