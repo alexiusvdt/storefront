@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     "storefront",
     "product",
     "user",
-    # 'order',
+    "order",
     # 'shipping',
     "django.contrib.admin",
     "django.contrib.auth",

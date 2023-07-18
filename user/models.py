@@ -38,7 +38,9 @@ class UserAddress(models.Model):
 
 
 class UserPayment(models.Model):
-    user_id = models.IntegerField()
+    user_id = models.ForeignKey(
+        User, verbose_name=_("user id"), on_delete=models.CASCADE
+    )
     payment_type = models.CharField(max_length=50)
     provider = models.CharField(max_length=50)
     account_number = models.IntegerField()
