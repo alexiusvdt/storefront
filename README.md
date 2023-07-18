@@ -8,16 +8,16 @@ fib = [0, 1, 1, 2, 3, 5, 8, 13]
 ~~# Bootstrap project (1)~~
 ## establish API
 # Create orders service (3)
-  * database models created, migration(s) applied
+  * ~~database models created, migration(s) applied~~
   * serializers created
   * create views (controller logic)
   * register urls (local & in parent app)
   * add test(s)
-# Create customer service (8 - lots of interconnected design)
-  * database models created, migration(s) applied
-  * serializers created
-  * create views (controller logic)
-  * register urls (local & in parent app)
+# Create user service (8 - lots of interconnected design)
+  * ~~database models created, migration(s) applied~~
+  * ~~serializers created~~
+  * ~~create views (controller logic)~~
+  * ~~register urls (local & in parent app)~~
   * add test(s)
 
 # create product service (3)
@@ -34,7 +34,7 @@ fib = [0, 1, 1, 2, 3, 5, 8, 13]
 
 
 # build the front end (8)
-# create login/auth endpoints
+# create login/auth endpoints (part of user service design)
 * re-enable authorization protection (storefront/settings.py middleware)
 
 

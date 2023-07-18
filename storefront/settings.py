@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []  # type: ignore
 
 
 # Application definition
-
 INSTALLED_APPS = [
     # my apps...do you include storefront in storefront?
     "storefront",

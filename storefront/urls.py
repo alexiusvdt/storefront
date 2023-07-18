@@ -19,7 +19,7 @@ from django.urls import include, path
 from rest_framework import routers
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-# from order import views as orderviews
+from order import views as orderviews
 from product import views as productviews
 from user import views as userviews
 
@@ -33,6 +33,9 @@ router.register(r"address", userviews.UserAddressView, "address")
 router.register(r"payment", userviews.UserPaymentView, "payment")
 router.register(r"session", userviews.ShoppingSessionView, "session")
 router.register(r"cart", userviews.CartView, "cart")
+router.register(r"payment_details", orderviews.PaymentDetailsView, "payment_details")
+router.register(r"order_details", orderviews.OrderDetailsView, "order_details")
+router.register(r"order_items", orderviews.OrderItemsView, "order_items")
 
 
 urlpatterns = [
@@ -42,6 +45,7 @@ urlpatterns = [
     path("api/", include(router.urls), name="category"),
     path("api/", include(router.urls), name="discount"),
     path("api/", include(router.urls), name="user"),
+    path("api/", include(router.urls), name="order"),
     # path('auth/', include('rest_auth.urls')),
     path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
