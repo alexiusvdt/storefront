@@ -5,20 +5,21 @@ A microservice architecture for an ecommerce platform. To (eventually) be deploy
 numbers are assigned as fib sequence
 fib = [0, 1, 1, 2, 3, 5, 8, 13]
 [starting db design](https://dbdocs.io/alex.johnson293/ecommerce?view=relationships) (note: some relationships incorrect & need fixing)
-
 ~~# Bootstrap project (1)~~
+## establish API
 # Create orders service (3)
   * database models created, migration(s) applied
-  * create simple template for testing
+  * serializers created
   * create views (controller logic)
   * register urls (local & in parent app)
   * add test(s)
-# Create customer service (8)
+# Create customer service (8 - lots of interconnected design)
   * database models created, migration(s) applied
-  * create simple template for testing
+  * serializers created
   * create views (controller logic)
   * register urls (local & in parent app)
   * add test(s)
+
 # create product service (3)
   * ~~database models created, migration(s) applied~~
   * ~~serializers created~~
@@ -28,9 +29,22 @@ fib = [0, 1, 1, 2, 3, 5, 8, 13]
     * ~~discount~~
   * ~~register urls (local & in parent app)~~
   * add data to test api functionality
-  * add authorization protection
   * add test(s)
+
+
+
+# build the front end (8)
+# create login/auth endpoints
+* re-enable authorization protection (storefront/settings.py middleware)
+
+
 # create controller service (13)
+# dockerize
+## deployment
+
+
+## post-deploy
+
 # forecast & create shipping service (5)
   * database models created, migration(s) applied
   * create simple template for testing
@@ -69,6 +83,8 @@ curl \
   -d '{\"refresh\":"<refresh token>"}' \
   http://localhost:8000/api/token/refresh/
 ```
+For more notes on auth design: [read this](https://testdriven.io/blog/django-spa-auth/)
+
 ## Setup
 
 ```sh

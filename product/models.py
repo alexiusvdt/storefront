@@ -2,6 +2,10 @@ from django.db import models
 
 # blank=true, field is not required
 # null sets null/notnull
+# OneToOne is 1-1 relationship
+# ManyToOne => class Car(models.Model) gets placed in the MANY slot
+# manufacturer = models.ForeignKey(etc)
+# a Car model has a Manufacturer – Manufacturer makes multiple cars but each Car only has one Manufacturer
 
 
 class ProductCategory(models.Model):
