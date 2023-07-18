@@ -19,6 +19,7 @@ from django.urls import include, path
 from rest_framework import routers
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
+# from order import views as orderviews
 from product import views as productviews
 from user import views as userviews
 
@@ -28,6 +29,11 @@ router.register(r"inventory", productviews.ProductInventoryView, "inventory")
 router.register(r"category", productviews.ProductCategoryView, "category")
 router.register(r"discount", productviews.DiscountView, "discount")
 router.register(r"users", userviews.UserView, "user")
+router.register(r"address", userviews.UserAddressView, "address")
+router.register(r"payment", userviews.UserPaymentView, "payment")
+router.register(r"session", userviews.ShoppingSessionView, "session")
+router.register(r"cart", userviews.CartView, "cart")
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
