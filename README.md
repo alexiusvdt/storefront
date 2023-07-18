@@ -1,6 +1,8 @@
 # storefront
 A microservice architecture for an ecommerce platform. To (eventually) be deployed in dockerized containers/kubernetes cluster.
 
+Note that this is a work in progress & a clean, polished README with endpoint documentation will not be available until V1 release.
+
 # ToDo/Roadmap
 numbers are assigned as fib sequence
 fib = [0, 1, 1, 2, 3, 5, 8, 13]
@@ -30,9 +32,22 @@ fib = [0, 1, 1, 2, 3, 5, 8, 13]
   * ~~register urls (local & in parent app)~~
   * add test(s)
 
+# refine API funcs
+* currently all endpoints are just returning objects.all() and not modifying, selecting WHERE userid = user id, etc
 
 
 # build the front end (8)
+* scrollable design w/ nav
+* subsections:
+  * product listing
+  * user portal (track orders, change pw, etc)
+  * about the company
+* login/out
+* shopping portion (list of products)
+* cart addon (small hover to view cart while browsing, separate page before purchase process starts)
+* purchase process
+* payment
+* confirmation email sent
 # create login/auth endpoints (part of user service design)
 * re-enable authorization protection (storefront/settings.py middleware)
 
@@ -42,7 +57,7 @@ fib = [0, 1, 1, 2, 3, 5, 8, 13]
 ## deployment
 
 
-## post-deploy
+## post-deploy (aka ideas out of original scope)
 
 # forecast & create shipping service (5)
   * database models created, migration(s) applied
@@ -50,6 +65,8 @@ fib = [0, 1, 1, 2, 3, 5, 8, 13]
   * create views(controller logic)
   * register urls (local & in parent app)
   * add test(s)
+
+
 
 ## The (todo)Later Base
 * [https://docs.djangoproject.com/en/4.2/topics/i18n/timezones/](create timezone middleware/adjust default setting)
