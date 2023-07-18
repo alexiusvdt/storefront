@@ -9,9 +9,9 @@ fib = [0, 1, 1, 2, 3, 5, 8, 13]
 ## establish API
 # Create orders service (3)
   * ~~database models created, migration(s) applied~~
-  * serializers created
-  * create views (controller logic)
-  * register urls (local & in parent app)
+  * ~~serializers created~~
+  * ~~create views (controller logic)~~
+  * ~~register urls (local & in parent app)~~
   * add test(s)
 # Create user service (8 - lots of interconnected design)
   * ~~database models created, migration(s) applied~~
@@ -28,7 +28,6 @@ fib = [0, 1, 1, 2, 3, 5, 8, 13]
     * ~~product_inventory~~
     * ~~discount~~
   * ~~register urls (local & in parent app)~~
-  * add data to test api functionality
   * add test(s)
 
 
