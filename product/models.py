@@ -15,6 +15,9 @@ class ProductCategory(models.Model):
     modified_at = models.DateTimeField(auto_now=True)
     closed_at = models.DateTimeField(null=True, blank=True)
 
+    def __str__(self):
+        return self.name
+
 
 class ProductInventory(models.Model):
     quantity = models.IntegerField()
@@ -34,6 +37,9 @@ class Discount(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
     closed_at = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
@@ -67,3 +73,6 @@ class Product(models.Model):
     class Meta:
         ordering = ["name"]
         get_latest_by = "created_at"
+
+    def __str__(self):
+        return self.name
