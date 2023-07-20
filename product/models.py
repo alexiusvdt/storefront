@@ -25,8 +25,8 @@ class ProductInventory(models.Model):
     modified_at = models.DateTimeField(auto_now=True)
     closed_at = models.DateTimeField(null=True, blank=True)
 
-    def __str__(self):
-        return self.quantity
+    def __int__(self):
+        return int(self.quantity)
 
 
 class Discount(models.Model):

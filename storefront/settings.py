@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "rest_framework.authtoken",
+    "dj_rest_auth",
     # contrib.sites allows this codebase to work on multiple databases
     "django.contrib.sites",
     "corsheaders",
