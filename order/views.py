@@ -1,4 +1,10 @@
-from rest_framework import viewsets
+from rest_framework.mixins import (
+    CreateModelMixin,
+    ListModelMixin,
+    RetrieveModelMixin,
+    UpdateModelMixin,
+)
+from rest_framework.viewsets import GenericViewSet
 
 from .models import OrderDetails, OrderItems, PaymentDetails
 from .serializers import (
@@ -8,16 +14,36 @@ from .serializers import (
 )
 
 
-class PaymentDetailsView(viewsets.ModelViewSet):
+class PaymentDetailsViewSet(
+    GenericViewSet,
+    CreateModelMixin,
+    RetrieveModelMixin,
+    UpdateModelMixin,
+    ListModelMixin,
+):
     serializer_class = PaymentDetailsSerializer
     queryset = PaymentDetails.objects.all()
 
 
-class OrderDetailsView(viewsets.ModelViewSet):
+class OrderDetailsViewSet(
+    GenericViewSet,
+    CreateModelMixin,
+    RetrieveModelMixin,
+    UpdateModelMixin,
+    ListModelMixin,
+):
+
     serializer_class = OrderDetailsSerializer
     queryset = OrderDetails.objects.all()
 
 
-class OrderItemsView(viewsets.ModelViewSet):
+class OrderItemsViewSet(
+    GenericViewSet,
+    CreateModelMixin,
+    RetrieveModelMixin,
+    UpdateModelMixin,
+    ListModelMixin,
+):
+
     serializer_class = OrderItemsSerializer
     queryset = OrderItems.objects.all()

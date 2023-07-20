@@ -30,7 +30,7 @@ class ProductViewSet(
     queryset = Product.objects.all()
 
 
-class ProductInventoryView(
+class ProductInventoryViewSet(
     GenericViewSet,
     CreateModelMixin,
     RetrieveModelMixin,
@@ -41,7 +41,7 @@ class ProductInventoryView(
     queryset = ProductInventory.objects.all()
 
 
-class ProductCategoryView(
+class ProductCategoryViewSet(
     GenericViewSet,
     CreateModelMixin,
     RetrieveModelMixin,
@@ -52,7 +52,7 @@ class ProductCategoryView(
     queryset = ProductCategory.objects.all()
 
 
-class DiscountView(
+class DiscountViewSet(
     GenericViewSet,
     CreateModelMixin,
     RetrieveModelMixin,
