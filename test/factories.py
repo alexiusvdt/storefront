@@ -1,6 +1,9 @@
 import factory
+from faker import Faker
 
-from product.models import ProductCategory
+from product.models import Discount, ProductCategory, ProductInventory  # Product,
+
+fake = Faker()
 
 
 class ProductCategoryFactory(factory.django.DjangoModelFactory):
@@ -11,60 +14,36 @@ class ProductCategoryFactory(factory.django.DjangoModelFactory):
         model = ProductCategory
 
 
-# class ProductCategory(models.Model):
-#     name
-#     description
-#     created_at)
-#     modified_at
-#     closed_at
+class ProductInventoryFactory(factory.django.DjangoModelFactory):
+    quantity = factory.Faker("pyint", min_value=0, max_value=1000)
+
+    class Meta:
+        model = ProductInventory
 
 
-# class ProductInventory(models.Model):
-#     quantity = models.IntegerField()
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     modified_at = models.DateTimeField(auto_now=True)
-#     closed_at = models.DateTimeField(null=True, blank=True)
+class DiscountFactory(factory.django.DjangoModelFactory):
+    name = factory.Faker("name")
+    description = factory.Faker("text")
+    # should pass validation in model
+    discount_percent = fake.pydecimal(left_digits=3, right_digits=2)
+    active = fake.pybool()
+
+    class Meta:
+        model = Discount
 
 
-# class Discount(models.Model):
-#     name = models.CharField(max_length=100)
-#     description = models.TextField()
-#     discount_percent = models.DecimalField(
-#         max_digits=5,
-#         decimal_places=2,
-#     )
-#     active = models.BooleanField(default=False)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     modified_at = models.DateTimeField(auto_now=True)
-#     closed_at = models.DateTimeField(null=True, blank=True)
+# class ProductFactory(factory.django.DjangoModelFactory):
+#     product_category = ProductCategoryFactory()
+#     inventory = ProductInventoryFactory()
+#     discount = DiscountFactory()
 
-#     def __str__(self):
-#         return self.name
+#     name = factory.Faker('name')
+#     description = factory.Faker('text')
+#     sku = fake.ean(length=13)
+#     category_id = product_category.id
+#     inventory_id = inventory.id
+#     price = fake.pydecimal(left_digits=3, right_digits=2)
+#     discount_id = discount.id
 
-# class Product(models.Model):
-#     name = models.CharField(max_length=100)
-#     description = models.TextField()
-#     sku = models.CharField(max_length=50)
-#     category_id = models.ForeignKey(
-#         ProductCategory,
-#         on_delete=models.CASCADE,
-#     )
-#     inventory_id = models.OneToOneField(
-#         ProductInventory,
-#         on_delete=models.CASCADE,
-#     )
-#     price = models.DecimalField(
-#         max_digits=5,
-#         decimal_places=2,
-#     )
-#     discount_id = models.ForeignKey(
-#         Discount,
-#         on_delete=models.CASCADE,
-#         null=True,
-#         blank=True,
-#     )
-#     # add timestamp on creation
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     # update when calling Model.save() and not QuerySet.update
-#     modified_at = models.DateTimeField(auto_now=True)
-#     closed_at = models.DateTimeField(null=True, blank=True)
+#     class Meta:
+#         model = Product
