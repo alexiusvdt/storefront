@@ -1,7 +1,10 @@
 import factory
 from faker import Faker
 
-from product.models import Discount, ProductCategory, ProductInventory  # Product,
+from product.models import Discount, ProductCategory, ProductInventory  # Product
+
+# from django.contrib.contenttypes.fields import GenericForeignKey
+
 
 fake = Faker()
 
@@ -32,18 +35,15 @@ class DiscountFactory(factory.django.DjangoModelFactory):
         model = Discount
 
 
+# having trouble assigning FK to Product class. Either object not saving correctly or returning error "must be of type DiscountID"
 # class ProductFactory(factory.django.DjangoModelFactory):
-#     product_category = ProductCategoryFactory()
-#     inventory = ProductInventoryFactory()
-#     discount = DiscountFactory()
-
 #     name = factory.Faker('name')
 #     description = factory.Faker('text')
 #     sku = fake.ean(length=13)
-#     category_id = product_category.id
-#     inventory_id = inventory.id
+#     # category_id = GenericForeignKey()
+#     # inventory_id = GenericForeignKey()
 #     price = fake.pydecimal(left_digits=3, right_digits=2)
-#     discount_id = discount.id
+#     # discount_id = DiscountFactory()
 
 #     class Meta:
 #         model = Product
