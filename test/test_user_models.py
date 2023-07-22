@@ -3,6 +3,7 @@
 import requests
 from django.test import TestCase
 from faker import Faker
+from rest_framework.authtoken.models import Token
 
 # from user.models import User
 
@@ -10,7 +11,7 @@ fake = Faker()
 
 
 class TestUserCreate(TestCase):
-    def test_user_create(self):
+    def test_create_user(self):
         """attempts to create a basic user account"""
         url = "http://127.0.0.1:8000/api/users/"
         email = fake.email()
@@ -23,6 +24,7 @@ class TestUserCreate(TestCase):
             "phone_no": 50345348,
             "is_employee": False,
         }
+        # double check this corresponds to viewsets and not written for APIView!
         response = requests.post(url, data=data)
         if response.status_code == 201:
             assert response.status_code == 201
