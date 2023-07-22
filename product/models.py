@@ -2,6 +2,10 @@ from django.db import models
 
 # blank=true, field is not required
 # null sets null/notnull
+# OneToOne is 1-1 relationship
+# ManyToOne => class Car(models.Model) gets placed in the MANY slot
+# manufacturer = models.ForeignKey(etc)
+# a Car model has a Manufacturer – Manufacturer makes multiple cars but each Car only has one Manufacturer
 
 
 class ProductCategory(models.Model):
@@ -11,12 +15,18 @@ class ProductCategory(models.Model):
     modified_at = models.DateTimeField(auto_now=True)
     closed_at = models.DateTimeField(null=True, blank=True)
 
+    def __str__(self):
+        return self.name
+
 
 class ProductInventory(models.Model):
     quantity = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
     closed_at = models.DateTimeField(null=True, blank=True)
+
+    def __int__(self):
+        return int(self.quantity)
 
 
 class Discount(models.Model):
@@ -30,6 +40,9 @@ class Discount(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
     closed_at = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
@@ -63,3 +76,6 @@ class Product(models.Model):
     class Meta:
         ordering = ["name"]
         get_latest_by = "created_at"
+
+    def __str__(self):
+        return self.name

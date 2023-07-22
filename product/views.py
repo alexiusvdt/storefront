@@ -1,5 +1,11 @@
-from django.http import HttpResponse
-from rest_framework import viewsets
+# from rest_framework import viewsets
+from rest_framework.mixins import (
+    CreateModelMixin,
+    ListModelMixin,
+    RetrieveModelMixin,
+    UpdateModelMixin,
+)
+from rest_framework.viewsets import GenericViewSet
 
 from .models import Discount, Product, ProductCategory, ProductInventory
 from .serializers import (
@@ -9,32 +15,49 @@ from .serializers import (
     ProductSerializer,
 )
 
-# from django.shortcuts import render
-# request -> responses
-# This is a request handler, not a viewer
-
-
-def say_hello(request):
-    return HttpResponse("hello world")
-
 
 # The viewsets base class provides the implementation for CRUD operations by default.
 # This code specifies the serializer_class and the queryset.
-class ProductView(viewsets.ModelViewSet):
+class ProductViewSet(
+    GenericViewSet,
+    CreateModelMixin,
+    RetrieveModelMixin,
+    UpdateModelMixin,
+    ListModelMixin,
+):
+
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
 
 
-class ProductInventoryView(viewsets.ModelViewSet):
+class ProductInventoryViewSet(
+    GenericViewSet,
+    CreateModelMixin,
+    RetrieveModelMixin,
+    UpdateModelMixin,
+    ListModelMixin,
+):
     serializer_class = ProductInventorySerializer
     queryset = ProductInventory.objects.all()
 
 
-class ProductCategoryView(viewsets.ModelViewSet):
+class ProductCategoryViewSet(
+    GenericViewSet,
+    CreateModelMixin,
+    RetrieveModelMixin,
+    UpdateModelMixin,
+    ListModelMixin,
+):
     serializer_class = ProductCategorySerializer
     queryset = ProductCategory.objects.all()
 
 
-class DiscountView(viewsets.ModelViewSet):
+class DiscountViewSet(
+    GenericViewSet,
+    CreateModelMixin,
+    RetrieveModelMixin,
+    UpdateModelMixin,
+    ListModelMixin,
+):
     serializer_class = DiscountSerializer
     queryset = Discount.objects.all()
