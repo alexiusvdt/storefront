@@ -1,13 +1,13 @@
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from rest_framework import serializers
+
+from .models import Cart, ShoppingSession, User, UserAddress, UserPayment
 
 # Auth stuff
 # from django.contrib.auth import authenticate
 # from django.contrib.auth.hashers import make_password
 # from django.db import models
 # from rest_framework.permissions import IsAuthenticated
-
-from .models import Cart, ShoppingSession, User, UserAddress, UserPayment
 
 
 # class RegisterSerializer(serializers.ModelSerializer):
@@ -27,12 +27,6 @@ from .models import Cart, ShoppingSession, User, UserAddress, UserPayment
 #                 email=validated_data["email"],
 #             )
 #             return user
-
-
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = "__all__"
 
 
 class UserSerializer(serializers.ModelSerializer):

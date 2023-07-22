@@ -1,5 +1,8 @@
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+from django.http import Http404
 from django.shortcuts import get_object_or_404
+from rest_framework import status
+
 # from rest_framework import generics, permissions
 from rest_framework.mixins import (
     CreateModelMixin,
@@ -11,9 +14,8 @@ from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
 from .models import Cart, ShoppingSession, User, UserAddress, UserPayment
-from .serializers import (
+from .serializers import (  # RegisterSerializer,
     CartSerializer,
-    # RegisterSerializer,
     ShoppingSessionSerializer,
     UserAddressSerializer,
     UserPaymentSerializer,
@@ -55,14 +57,26 @@ class UserViewSet(
         serializer = UserSerializer(user)
         return Response(serializer.data)
 
-    def update(self, request, pk=None):  # patch
-        pass
+    # def update(self, request, pk=None):  # patch
+    #     apparently partial/update is better
 
-    def partial_update(self, request, pk=None):  # put
-        pass
+    def partial_update(self, request, pk=None):
+        queryset = self.queryset.get(pk=pk)
+        serializer = UserSerializer(queryset, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
 
     def destroy(self, request, pk=None):  # delete
-        pass
+        try:
+            instance = self.get_object()
+            self.perform_destroy(instance)
+        except Http404:
+            pass
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+    def perform_destroy(self, instance):
+        instance.delete()
 
 
 class UserAddressViewSet(

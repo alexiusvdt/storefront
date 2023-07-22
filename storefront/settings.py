@@ -15,6 +15,8 @@ import datetime
 import os
 from pathlib import Path
 
+# from django.utils.log import DEFAULT_LOGGING
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ["SECRET_KEY"]
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -35,7 +37,7 @@ ALLOWED_HOSTS = []  # type: ignore
 
 # Application definition
 INSTALLED_APPS = [
-    # my apps...do you include storefront in storefront?
+    # my apps
     "storefront",
     "product",
     "user",
@@ -92,6 +94,27 @@ JWT_AUTH = {
 }
 
 ROOT_URLCONF = "storefront.urls"
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "WARNING",
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
+            "propagate": False,
+        },
+    },
+}
 
 TEMPLATES = [
     {

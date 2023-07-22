@@ -3,14 +3,15 @@
 import requests
 from django.test import TestCase
 from faker import Faker
-from rest_framework.authtoken.models import Token
+
+# from rest_framework.authtoken.models import Token
 
 # from user.models import User
 
 fake = Faker()
 
 
-class TestUserCreate(TestCase):
+class TestUser(TestCase):
     def test_create_user(self):
         """attempts to create a basic user account"""
         url = "http://127.0.0.1:8000/api/users/"
@@ -32,11 +33,10 @@ class TestUserCreate(TestCase):
             print("Error: {0}".format(response.status_code), response)
             assert response.status_code == 201
 
-
-class TestUserUpdate(TestCase):
     def test_update_user(self):
-        """PUT data to an existing user record"""
-        url = "http://127.0.0.1:8000/api/users/1/"
+        """PATCH data to an existing user record"""
+        pk = 1
+        url = f"http://127.0.0.1:8000/api/users/{pk}/"
         data = {"first_name": "Updated"}
         response = requests.patch(url, data=data)
         if response.status_code == 200:
@@ -45,8 +45,6 @@ class TestUserUpdate(TestCase):
             print("Error: {0}".format(response.status_code))
             assert response.status_code == 200
 
-
-class TestUserGetAll(TestCase):
     def test_get_list_of_users(self):
         """GET all users in DB"""
         url = "http://127.0.0.1:8000/api/users"
